@@ -75,9 +75,9 @@ class OrderService implements OrderServiceInterface
             return;
         }
 
-        // Queue Job এ dispatch — background এ চলবে
-        // DispatchUberDirectDelivery::dispatch($order)
-        //     ->onQueue('deliveries');
+        // Queue Job a dispatch — background running
+        DispatchUberDirectDelivery::dispatch($order)
+            ->onQueue('deliveries');
 
         Log::info('Uber Direct delivery job queued', [
             'order_id' => $orderId,
