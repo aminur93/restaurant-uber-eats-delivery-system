@@ -14,6 +14,35 @@ A backend service built with **Laravel 12** that integrates **Uber Eats** and **
 
 ---
 
+## Assignment Requirements Coverage
+
+| Requirement | Implementation | Status |
+|-------------|---------------|--------|
+| Database Design — orders table | `orders` migration with all required columns | ✅ |
+| Database Design — order_items table | `order_items` migration with all required columns | ✅ |
+| Database Design — deliveries table | `deliveries` migration with all required columns | ✅ |
+| POST /api/orders — Website Order API | `OrderController@store` with validation | ✅ |
+| POST /webhook/uber-eats/orders | `UberEatsController@handleOrder` with duplicate guard | ✅ |
+| Uber Direct Delivery Integration | `UberDirectService` with OAuth token + retry | ✅ |
+| POST /webhook/uber-direct/status | `UberDirectController@handleStatus` with HMAC auth | ✅ |
+| GET /api/orders — Dashboard API | `OrderController@index` with full order + delivery status | ✅ |
+| Project Structure — Controllers | `OrderController`, `UberEatsController`, `UberDirectController` | ✅ |
+| Project Structure — Models | `Order`, `OrderItem`, `Delivery` | ✅ |
+| Project Structure — Services | `OrderService`, `UberDirectService`, `UberAuthService` | ✅ |
+| Bonus — Retry logic | `Http::retry(3, 500)` + Job `backoff([30, 60, 120])` | ✅ |
+| Bonus — Logging system | `Log::info`, `Log::error`, `Log::warning` throughout | ✅ |
+| Bonus — Webhook authentication | HMAC SHA256 signature verification | ✅ |
+| Bonus — Queue worker | `DispatchUberDirectDelivery` Job + Supervisor config | ✅ |
+| Deliverable — GitHub repository | Full source code with git history | ✅ |
+| Deliverable — README | Setup instructions, API docs, schema | ✅ |
+| Deliverable — Database schema | 3 migration files + schema table in README | ✅ |
+| Deliverable — API documentation | All endpoints with request/response examples | ✅ |
+| Feature & Unit Tests | 46 tests covering all endpoints and services | ✅ |
+
+> **Note:** Assignment specified CodeIgniter but Laravel 12 was used as it provides better support for Repository Pattern, Interface/Contract design, Queue Jobs, and modern PHP architecture — all of which align with senior-level development standards.
+
+---
+
 ## Tech Stack
 
 - **PHP** 8.2+
