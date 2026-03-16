@@ -72,7 +72,7 @@ class UberDirectWebhookTest extends TestCase
 
         $response->assertStatus(200);
 
-        $this->assertDatabaseHas('delivers', [
+        $this->assertDatabaseHas('deliveries', [
             'delivery_status' => 'delivered',
         ]);
     }

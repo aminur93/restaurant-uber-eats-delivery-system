@@ -140,7 +140,7 @@ class OrderApiTest extends TestCase
             'status' => 'ready_for_pickup',
         ]);
 
-        // TEST_MODE=true + QUEUE=sync তাই delivery সাথে সাথে তৈরি হবে
+        // TEST_MODE=true + QUEUE=sync delivery ready
         $this->assertDatabaseHas('deliveries', [
             'order_id' => $order->id,
             'provider' => 'uber_direct',
@@ -156,7 +156,7 @@ class OrderApiTest extends TestCase
 
         $this->patchJson("/api/orders/{$order->id}/ready");
 
-        // uber_eats order এ delivery dispatch হওয়া উচিত না
+        // uber_eats order এ delivery dispatch never
         $this->assertDatabaseMissing('deliveries', [
             'order_id' => $order->id,
         ]);
