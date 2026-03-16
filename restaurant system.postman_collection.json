@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "ad23a3a8-b79a-4227-9520-77f67225c95f",
+		"name": "restaurant system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6193828"
+	},
+	"item": [
+		{
+			"name": "create orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customer_name\": \"John Doe\",\n  \"phone\": \"+8801711000000\",\n  \"address\": \"123 Main St, Dhaka\",\n  \"items\": [\n    {\n      \"name\": \"Burger\",\n      \"qty\": 1,\n      \"price\": 5.00\n    },\n    {\n      \"name\": \"Fries\",\n      \"qty\": 2,\n      \"price\": 2.50\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ready orders for pickup",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"message\": \"Order marked as ready. Delivery dispatched to queue.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders/1/ready",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders",
+						"1",
+						"ready"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhook uber-eats orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_id\": \"UE-TEST-001\",\n  \"customer_name\": \"Alice Rahman\",\n  \"address\": \"45 Broadway, Gulshan, Dhaka\",\n  \"phone\": \"+8801811000000\",\n  \"items\": [\n    {\n      \"name\": \"Margherita Pizza\",\n      \"qty\": 1,\n      \"price\": 12.00\n    },\n    {\n      \"name\": \"Garlic Bread\",\n      \"qty\": 2,\n      \"price\": 3.50\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/webhook/uber-eats/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"webhook",
+						"uber-eats",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "webhook uber-direct status",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"delivery_id\": \"FAKE-DEL-RIDAULHK\",\n  \"status\": \"courier_assigned\"\n}\n\n// {\n//   \"delivery_id\": \"FAKE-DEL-RIDAULHK\",\n//   \"status\": \"courier_picked_up\"\n// }\n\n// {\n//   \"delivery_id\": \"FAKE-DEL-RIDAULHK\",\n//   \"status\": \"delivered\"\n// }\n\n// {\n//   \"delivery_id\": \"FAKE-DEL-RIDAULHK\",\n//   \"status\": \"cancelled\"\n// }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/webhook/uber-direct/status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"webhook",
+						"uber-direct",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
