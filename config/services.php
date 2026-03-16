@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'uber_direct' => [
+        'client_id'      => env('UBER_DIRECT_CLIENT_ID'),
+        'client_secret'  => env('UBER_DIRECT_CLIENT_SECRET'),
+        'customer_id'    => env('UBER_DIRECT_CUSTOMER_ID'),
+        'webhook_secret' => env('UBER_DIRECT_WEBHOOK_SECRET'),
+        'test_mode'      => env('UBER_DIRECT_TEST_MODE', true),
+    ],
+
 ];
