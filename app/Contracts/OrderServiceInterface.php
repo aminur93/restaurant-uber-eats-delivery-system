@@ -3,6 +3,7 @@
 namespace App\Contracts;
 
 use App\Models\Order;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 interface OrderServiceInterface
@@ -14,4 +15,6 @@ interface OrderServiceInterface
     public function markReadyAndDispatch(int $orderId): void;
 
     public function getAllOrders(): Collection;
+
+    public function getPaginatedOrders(int $perPage = 10): LengthAwarePaginator;
 }

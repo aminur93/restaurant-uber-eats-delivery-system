@@ -3,6 +3,7 @@
 namespace App\Contracts;
 
 use App\Models\Order;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 interface OrderRepositoryInterface
@@ -16,4 +17,6 @@ interface OrderRepositoryInterface
     public function updateStatus(int $id, string $status): bool;
 
     public function all(): Collection;
+
+    public function paginate(int $perPage = 10): LengthAwarePaginator;
 }

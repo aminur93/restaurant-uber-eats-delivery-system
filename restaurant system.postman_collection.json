@@ -62,7 +62,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/orders",
+					"raw": "http://127.0.0.1:8000/api/orders?pagination=true",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -74,6 +74,12 @@
 					"path": [
 						"api",
 						"orders"
+					],
+					"query": [
+						{
+							"key": "pagination",
+							"value": "true"
+						}
 					]
 				}
 			},

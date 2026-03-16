@@ -19,7 +19,17 @@ class OrderController extends Controller
     // GET /api/orders
     public function index(): AnonymousResourceCollection
     {
-        $orders = $this->orderService->getAllOrders();
+        $pagination = request()->boolean('pagination', true);
+        
+        $perPage    = (int) request()->get('per_page', 10);
+
+        if ($pagination) {
+            // Paginated + Redis cached
+            $orders = $this->orderService->getPaginatedOrders($perPage);
+        } else {
+            // All orders without pagination
+            $orders = $this->orderService->getAllOrders();
+        }
 
         return OrderResource::collection($orders);
     }

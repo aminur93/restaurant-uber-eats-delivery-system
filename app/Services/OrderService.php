@@ -7,6 +7,7 @@ use App\Contracts\OrderRepositoryInterface;
 use App\Contracts\OrderServiceInterface;
 use App\Jobs\DispatchUberDirectDelivery;
 use App\Models\Order;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -87,5 +88,10 @@ class OrderService implements OrderServiceInterface
     public function getAllOrders(): Collection
     {
         return $this->orderRepository->all();
+    }
+
+    public function getPaginatedOrders(int $perPage = 10): LengthAwarePaginator
+    {
+        return $this->orderRepository->paginate($perPage);
     }
 }
