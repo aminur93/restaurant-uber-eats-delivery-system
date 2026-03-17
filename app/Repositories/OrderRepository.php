@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 
 class OrderRepository implements OrderRepositoryInterface
 {
-    private int $cacheTtl = 300;
+    private int $cacheTtl = 60;
     
     public function create(array $data): Order
     {
