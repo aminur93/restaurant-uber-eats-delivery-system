@@ -50,9 +50,8 @@ class OrderRepository implements OrderRepositoryInterface
     public function paginate(int $perPage = 10): LengthAwarePaginator
     {
         $page     = request()->get('page', 1);
+        
         $cacheKey = "orders:page:{$page}:per:{$perPage}";
-
-        //dd('paginate called', $page, $cacheKey); // ← এটা add করো
 
         if ((int) $page === 1) {
             return Cache::store('redis')->remember(
