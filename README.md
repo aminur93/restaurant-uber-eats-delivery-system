@@ -110,6 +110,14 @@ UBER_DIRECT_WEBHOOK_SECRET=your_webhook_secret
 UBER_DIRECT_TEST_MODE=true
 
 RESTAURANT_PICKUP_ADDRESS="Your Restaurant, 123 Main St, Dhaka"
+
+#Redis
+CACHE_STORE=redis
+
+REDIS_CLIENT=predis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 ```
 
 ### 5. Create database
